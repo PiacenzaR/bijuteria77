@@ -74,3 +74,44 @@ document.getElementById('sim').addEventListener('click', function() {
     alert('Obrigado por sua resposta!');
   }
 });
+
+
+function simClicked() {
+  if (confirm('Você realmente quer sair comigo?')) {
+    
+    fetch('https://seu-servidor.com/enviar-email', { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        resposta: 'sim',
+        mensagem: 'Ela aceitou sair com você!'
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Email enviado com sucesso:', data);
+    })
+    .catch((error) => {
+      console.error('Erro ao enviar o email:', error);
+    });
+    
+    alert('Obrigado por sua resposta!');
+  }
+}
+
+document.getElementById('sim').addEventListener('click', simClicked);
+document.getElementById('sim').addEventListener('touchstart', simClicked);
+
+
+function naoClicked() {
+  const naoButton = document.getElementById('nao');
+  naoButton.style.position = 'absolute';
+  naoButton.style.top = Math.random() * window.innerHeight + 'px';
+  naoButton.style.left = Math.random() * window.innerWidth + 'px';
+}
+
+
+document.getElementById('nao').addEventListener('click', naoClicked);
+document.getElementById('nao').addEventListener('touchstart', naoClicked);
