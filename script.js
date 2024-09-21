@@ -49,31 +49,7 @@ function createHearts() {
   }
 }
 
-document.getElementById('sim').addEventListener('click', function() {
-  
-  if (confirm('Você realmente quer sair comigo?')) {
-    
-    fetch('https://seu-servidor.com/enviar-email', { 
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        resposta: 'sim',
-        mensagem: 'Ela aceitou sair com você!'
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Email enviado com sucesso:', data);
-    })
-    .catch((error) => {
-      console.error('Erro ao enviar o email:', error);
-    });
-    
-    alert('Obrigado por sua resposta!');
-  }
-});
+
 
 
 function simClicked() {
